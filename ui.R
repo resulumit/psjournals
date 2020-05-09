@@ -12,43 +12,19 @@ psjournals <- psjournals %>%
   # add new variables, to be unselected later
   mutate(
     # calculate limits in terms of words, characters, and pages
-    min_words = case_when(limit_unit == "words" ~ as.numeric(lower_limit),
-                          limit_unit == "pages" ~ lower_limit * 400,
-                          limit_unit == "characters" ~ round(lower_limit / 6),
-                          TRUE ~ 0),
     max_words = case_when(limit_unit == "words" ~ as.numeric(upper_limit),
-                          limit_unit == "pages" ~ upper_limit * 400,
+                          limit_unit %in% c("page", "pages") ~ upper_limit * 400,
                           limit_unit == "characters" ~ round(upper_limit / 6),
                           TRUE ~ 0),
-
-    min_characters = min_words * 6,
     max_characters = max_words * 6,
-
-    min_pages = case_when(min_words == 0 ~ 0,
-                          TRUE ~ round(min_words / 400)),
-    max_pages = case_when(max_words == 0 ~ 0,
-                          TRUE ~ round(max_words / 400)),
-
-    # add zeros to slider variables
-    h5_index_z = ifelse(is.na(h5_index), 0, h5_index),
-    h5_median_z = ifelse(is.na(h5_median), 0, h5_median),
-    ssci_rank_z = ifelse(is.na(ssci_rank), 0, ssci_rank),
-
-    # re-group publisher
-    re_publisher = case_when(publisher %in% c("Taylor & Francis", "Sage",
-                                              "Cambridge University Press",
-                                              "Oxford University Press",
-                                              "Wiley", "Springer", "Palgrave") ~ publisher,
-                             TRUE ~ "Other")
-
-
+    max_pages = round(max_words / 400)
   )
 
 # Start: page ----
 fluidPage(
 
 # App title ----
-  titlePanel("psjournals: Filter Political Science Journals"),
+  titlePanel("Filter Political Science Journals"),
 
 # Sidebar layout with input and output definitions ----
   sidebarLayout(
@@ -73,7 +49,7 @@ sliderInput(inputId = "publishedSince", label = "Since", step = 1, ticks = FALSE
             min = min(psjournals$since, na.rm = TRUE), max = max(psjournals$since, na.rm = TRUE)),
 
 # Input: Scope ----
-searchInput(inputId = "widget", label = "Scope", placeholder = "Enter a keyword to search journal scope",
+searchInput(inputId = "widget", label = "Scope", placeholder = "Filter journals by scope",
   btnSearch = icon("search"), btnReset = icon("remove"), width = "100%"),
 
 # Input: H5 Index ----
@@ -91,7 +67,7 @@ sliderInput(inputId = "ssciRank", label = "SSCI Rank", step = 1, ticks = FALSE,
             value = c(0, max(psjournals$ssci_rank, na.rm = TRUE)),
             min = 0, max = max(psjournals$ssci_rank, na.rm = TRUE)),
 
-# Input: Article type ----
+# Input: Article Type ----
 pickerInput(inputId = "typeCategory", label = "Article Type",
             choices = c("Article" = "article", "Research Note" = "research_note",
                         "Book Review" = "book_review", "Literature Review" = "literature_review",
@@ -134,7 +110,7 @@ pickerInput(inputId = "selectedVariables", label = "Variables to Display",
                         "Scope", "H5 Index", "H5 Median",
                         "SSCI Rank", "Article Type",
                         "Length Limits" ),
-            selected = c("Journal", "Scope", "H5 Index", "Article Type", "Length Limits"),
+            selected = c("Journal", "H5 Index", "Article Type", "Length Limits"),
             options = list(`actions-box` = TRUE, size = 9,
                            `selected-text-format` = "count"),
             multiple = TRUE
@@ -156,9 +132,9 @@ mainPanel(
              br(),
              br(),
              p("The source code, including an R data package, and descriptions are available at", a("https://github.com/resulumit/psjournals.", href = "https://github.com/resulumit/psjournals")),
-             p("The list of journals is not exhaustive. Existing observations may be inaccurate. Consult the journal websites for the most accurate information."),
-             p("Reporting any issues to", a("https://github.com/resulumit/psjournals/issues", href = "https://github.com/resulumit/psjournals/issues"), "or", a("resul.umit@unilu.ch", href = "mailto:resul.umit@unilu.ch?subject=psjournals"),
-               "would be very much appreciated.")
+             p("This app is based on data from a comprehensive, but not exhaustive, list of political science journals. At the same time, the dataset might include journals that do not unambiguously belong to the discipline of political science. Some data points may be inaccurate as well, and others may become inaccurate over time. Consult journal websites for the most accurate information."),
+             p("Reporting any issues with the data, package, and/or app at", a("https://github.com/resulumit/psjournals/issues", href = "https://github.com/resulumit/psjournals/issues"), "or to", a("resul.umit@unilu.ch", href = "mailto:resul.umit@unilu.ch?subject=psjournals"),
+               "is highly encouraged.")
 
 
              )))
