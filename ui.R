@@ -133,8 +133,7 @@ mainPanel(
              br(),
              p("The source code, including an R data package, and descriptions are available at", a("https://github.com/resulumit/psjournals.", href = "https://github.com/resulumit/psjournals")),
              p("This app is based on data from a comprehensive, but not exhaustive, list of political science journals. At the same time, the dataset might include journals that do not unambiguously belong to the discipline of political science. Some data points may be inaccurate as well, and others may become inaccurate over time. Consult journal websites for the most accurate information."),
-             p("Reporting any issues with the data, package, and/or app at", a("https://github.com/resulumit/psjournals/issues", href = "https://github.com/resulumit/psjournals/issues"), "or to", a("resul.umit@unilu.ch", href = "mailto:resul.umit@unilu.ch?subject=psjournals"),
-               "is highly encouraged.")
+             p("Please report any issues with the dataset, package, and/or the app at", a("https://github.com/resulumit/psjournals/issues", href = "https://github.com/resulumit/psjournals/issues"), "or to", a("resul.umit@unilu.ch.", href = "mailto:resul.umit@unilu.ch?subject=psjournals"))
 
 
              )))
