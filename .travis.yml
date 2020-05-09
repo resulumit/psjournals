@@ -3,4 +3,4 @@ sudo: false
 cache: packages
 warnings_are_errors: false
 after_success:
-  - R -q -e 'library("covr");codecov()'
+  - R -q -e 'library(covr);codecov()'
