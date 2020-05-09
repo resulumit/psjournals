@@ -36,10 +36,8 @@ psjournals %>%
            min_characters = min_words * 6,
            max_characters = max_words * 6,
 
-           min_pages = case_when(min_words == 0 ~ 0,
-                                 TRUE ~ round(min_words / 400)),
-           max_pages = case_when(max_words == 0 ~ 0,
-                                 TRUE ~ round(max_words / 400)),
+           min_pages = case_when(min_words == 0 ~ 0, TRUE ~ round(min_words / 400)),
+           max_pages = round(max_words / 400),
 
           # add zeros to slider variables
            h5_index_z = ifelse(is.na(h5_index), 0, h5_index),
