@@ -1,9 +1,6 @@
 # ps_journals
 
 [![CRAN](https://www.r-pkg.org/badges/version/psjournals)](https://cran.r-project.org/package=psjournals)
-![Downloads](https://cranlogs.r-pkg.org/badges/psjournals)
-[![Travis Build Status](https://travis-ci.org/resulumit/psjournals.png?branch=master)](https://travis-ci.org/resulumit/psjournals)
-[![codecov.io](https://codecov.io/github/resulumit/psjournals/coverage.svg?branch=master)](https://codecov.io/github/resulumit/psjournals?branch=master)
 
 ## Description
 
