@@ -44,12 +44,12 @@ pickerInput(inputId = "publisher", label = "Publisher",
     ),
 
 # Input: Since ----
-sliderInput(inputId = "publishedSince", label = "Since", step = 1, ticks = FALSE, sep = "",
+sliderInput(inputId = "publishedSince", label = "Publishing since", step = 1, ticks = FALSE, sep = "",
             value = c(min(psjournals$since, na.rm = TRUE), max(psjournals$since, na.rm = TRUE)),
             min = min(psjournals$since, na.rm = TRUE), max = max(psjournals$since, na.rm = TRUE)),
 
 # Input: Scope ----
-searchInput(inputId = "widget", label = "Scope", placeholder = "Filter journals by scope",
+searchInput(inputId = "widget", label = "Journal scope", placeholder = "Filter scopes by keyword",
   btnSearch = icon("search"), btnReset = icon("remove"), width = "100%"),
 
 # Input: H5 Index ----
@@ -68,7 +68,7 @@ sliderInput(inputId = "ssciRank", label = "SSCI Rank", step = 1, ticks = FALSE,
             min = 0, max = max(psjournals$ssci_rank, na.rm = TRUE)),
 
 # Input: Article Type ----
-pickerInput(inputId = "typeCategory", label = "Article Type",
+pickerInput(inputId = "typeCategory", label = "Article type",
             choices = c("Article" = "article", "Research Note" = "research_note",
                         "Book Review" = "book_review", "Literature Review" = "literature_review",
                         "Comment" = "comment", "Other" = "other"),
@@ -82,30 +82,30 @@ pickerInput(inputId = "typeCategory", label = "Article Type",
 # Input: Word Limit ----
 
 # Conditional Input: Limit Type ----
-selectInput(inputId ="limitType", label ="Lenght in ...",
+selectInput(inputId ="limitType", label ="Length limits, translated to ...",
             selected = "Words", c("Words", "Characters", "Pages")),
 
 # Conditionals
 conditionalPanel(
   condition = "input.limitType == 'Words'",
-  sliderInput(inputId = "wordLimits", label = "Word Limits", step = 1, ticks = FALSE,
+  sliderInput(inputId = "wordLimits", label = "Number of words in your manuscript", step = 1, ticks = FALSE,
               value = c(0, max(psjournals$max_words, na.rm = TRUE)),
               min = 0, max = max(psjournals$max_words, na.rm = TRUE))),
 
 conditionalPanel(
   condition = "input.limitType == 'Characters'",
-  sliderInput(inputId = "characterLimits", label = "Character Limits", step = 1, ticks = FALSE,
+  sliderInput(inputId = "characterLimits", label = "Number of characters in your manuscript", step = 1, ticks = FALSE,
               value = c(0, max(psjournals$max_characters, na.rm = TRUE)),
               min = 0, max = max(psjournals$max_characters, na.rm = TRUE))),
 
 conditionalPanel(
   condition = "input.limitType == 'Pages'",
-  sliderInput(inputId = "pageLimits", label = "Page Limits", step = 1, ticks = FALSE,
+  sliderInput(inputId = "pageLimits", label = "Number of pages in your manuscript", step = 1, ticks = FALSE,
               value = c(0, max(psjournals$max_pages, na.rm = TRUE)),
               min = 0, max = max(psjournals$max_pages, na.rm = TRUE))),
 
 # Input: Variables ----
-pickerInput(inputId = "selectedVariables", label = "Variables to Display",
+pickerInput(inputId = "selectedVariables", label = "Variables to display",
             choices = c("Journal", "Publisher", "Since",
                         "Scope", "H5 Index", "H5 Median",
                         "SSCI Rank", "Article Type",
