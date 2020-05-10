@@ -67,9 +67,9 @@ psjournals %>%
                   h5_median_z >= input$h5Median[1] & h5_median_z <= input$h5Median[2],
                   ssci_rank_z >= input$ssciRank[1] & ssci_rank_z <= input$ssciRank[2],
                   type_category %in% input$typeCategory,
-                  case_when(input$limitType == "Words" ~ min_words >= input$wordLimits[1] & max_words <= input$wordLimits[2],
-                            input$limitType == "Characters" ~ min_characters >= input$characterLimits[1] & max_characters <= input$characterLimits[2],
-                            input$limitType == "Pages" ~ min_pages >= input$pageLimits[1] & max_pages <= input$pageLimits[2])
+                  case_when(input$limitType == "Words" ~ min_words <= input$wordLimits[1] & max_words <= input$wordLimits[2],
+                            input$limitType == "Characters" ~ min_characters <= input$characterLimits[1] & max_characters <= input$characterLimits[2],
+                            input$limitType == "Pages" ~ min_pages <= input$pageLimits[1] & max_pages <= input$pageLimits[2])
 
            ) %>%
 
