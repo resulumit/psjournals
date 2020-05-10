@@ -98,7 +98,7 @@ output$download_original <- downloadHandler(
     paste("psjournals", "-", Sys.Date(), ".csv", sep = "")
   },
   content = function(file) {
-    write.csv(psjournals, file, row.names = FALSE)
+    write.csv(psjournals, file, row.names = FALSE, na = "")
   }
 )
 
