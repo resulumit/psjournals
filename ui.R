@@ -1,24 +1,20 @@
 # ui.R
 
+# load libraries
 library(shiny)
 library(shinyWidgets)
 library(psjournals)
 library(dplyr)
 library(DT)
 
-
+# calculate limits in terms of words, characters, and pages
 psjournals <- psjournals %>%
-
-  # add new variables, to be unselected later
-  mutate(
-    # calculate limits in terms of words, characters, and pages
-    max_words = case_when(limit_unit == "words" ~ as.numeric(upper_limit),
-                          limit_unit %in% c("page", "pages") ~ upper_limit * 400,
-                          limit_unit == "characters" ~ round(upper_limit / 6),
-                          TRUE ~ 0),
-    max_characters = max_words * 6,
-    max_pages = round(max_words / 400)
-  )
+  mutate(max_words = case_when(limit_unit == "words" ~ as.numeric(upper_limit),
+                               limit_unit %in% c("page", "pages") ~ upper_limit * 400,
+                               limit_unit == "characters" ~ round(upper_limit / 6),
+                               TRUE ~ 0),
+         max_characters = max_words * 6,
+         max_pages = round(max_words / 400))
 
 # Start: page ----
 fluidPage(
@@ -40,8 +36,7 @@ pickerInput(inputId = "publisher", label = "Publisher",
                          "Oxford University Press", "Springer", "Palgrave", "Other"),
             options = list(`actions-box` = TRUE, size = 8,
                                `selected-text-format` = "count"),
-            multiple = TRUE
-    ),
+            multiple = TRUE),
 
 # Input: Since ----
 sliderInput(inputId = "publishedSince", label = "Publishing since", step = 1, ticks = FALSE, sep = "",
@@ -50,7 +45,7 @@ sliderInput(inputId = "publishedSince", label = "Publishing since", step = 1, ti
 
 # Input: Scope ----
 searchInput(inputId = "widget", label = "Journal scope", placeholder = "Filter scopes by keyword",
-  btnSearch = icon("search"), btnReset = icon("remove"), width = "100%"),
+            btnSearch = icon("search"), btnReset = icon("remove"), width = "100%"),
 
 # Input: H5 Index ----
 sliderInput(inputId = "h5Index", label = "H5 Index", step = 1, ticks = FALSE,
@@ -76,32 +71,34 @@ pickerInput(inputId = "typeCategory", label = "Article type",
                          "comment", "other"),
             options = list(`actions-box` = TRUE, size = 6,
                            `selected-text-format` = "count"),
-            multiple = TRUE
-),
+            multiple = TRUE),
 
-# Input: Word Limit ----
+# Input: Lenght Limits ----
+switchInput(inputId = "lengthLimits", label = "Length Limits", labelWidth = "100px"),
 
 # Conditional Input: Limit Type ----
-selectInput(inputId ="limitType", label ="Length limits, translated to ...",
-            selected = "Words", c("Words", "Characters", "Pages")),
+conditionalPanel(
+  condition = "input.lengthLimits",
+  selectInput(inputId ="limitType", label ="Length limits, translated to ...",
+            selected = "Words", c("Words", "Characters", "Pages"))),
 
 # Conditionals
 conditionalPanel(
-  condition = "input.limitType == 'Words'",
-  sliderInput(inputId = "wordLimits", label = "Number of words in your manuscript", step = 1, ticks = FALSE,
-              value = c(0, max(psjournals$max_words, na.rm = TRUE)),
+  condition = "input.lengthLimits & input.limitType == 'Words'",
+  sliderInput(inputId = "wordLimits", label = "Number of words in your manuscript", step = 100, ticks = FALSE,
+              value = c(4000, 6000),
               min = 0, max = max(psjournals$max_words, na.rm = TRUE))),
 
 conditionalPanel(
-  condition = "input.limitType == 'Characters'",
-  sliderInput(inputId = "characterLimits", label = "Number of characters in your manuscript", step = 1, ticks = FALSE,
-              value = c(0, max(psjournals$max_characters, na.rm = TRUE)),
+  condition = "input.lengthLimits & input.limitType == 'Characters'",
+  sliderInput(inputId = "characterLimits", label = "Number of characters in your manuscript", step = 1000, ticks = FALSE,
+              value = c(24000, 36000),
               min = 0, max = max(psjournals$max_characters, na.rm = TRUE))),
 
 conditionalPanel(
-  condition = "input.limitType == 'Pages'",
+  condition = "input.lengthLimits & input.limitType == 'Pages'",
   sliderInput(inputId = "pageLimits", label = "Number of pages in your manuscript", step = 1, ticks = FALSE,
-              value = c(0, max(psjournals$max_pages, na.rm = TRUE)),
+              value = c(10, 15),
               min = 0, max = max(psjournals$max_pages, na.rm = TRUE))),
 
 # Input: Variables ----
@@ -113,8 +110,7 @@ pickerInput(inputId = "selectedVariables", label = "Variables to display",
             selected = c("Journal", "H5 Index", "Article Type", "Length Limits"),
             options = list(`actions-box` = TRUE, size = 9,
                            `selected-text-format` = "count"),
-            multiple = TRUE
-),
+            multiple = TRUE),
 
 # Buttons: Download ----
 downloadButton(outputId = "download_original", "Original Dataset")
@@ -134,8 +130,6 @@ mainPanel(
              p("The source code, including an R data package, and descriptions are available at", a("https://github.com/resulumit/psjournals.", href = "https://github.com/resulumit/psjournals")),
              p("This app is based on data from a comprehensive, but not exhaustive, list of political science journals. At the same time, the dataset might include journals that do not unambiguously belong to the discipline of political science. Some data points may be inaccurate as well, and others may become inaccurate over time. Consult journal websites for the most accurate information."),
              p("Please report any issues with the dataset, package, and/or the app at", a("https://github.com/resulumit/psjournals/issues", href = "https://github.com/resulumit/psjournals/issues"), "or to", a("resul.umit@unilu.ch.", href = "mailto:resul.umit@unilu.ch?subject=psjournals"))
-
-
              )))
 
 # End: sidebarLayout ----
