@@ -1,4 +1,4 @@
-# ps_journals
+# psjournals
 
 [![CRAN](https://www.r-pkg.org/badges/version/psjournals)](https://cran.r-project.org/package=psjournals)
 
