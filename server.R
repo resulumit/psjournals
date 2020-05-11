@@ -62,12 +62,12 @@ psjournals %>%
           # filter according to ui
            filter(re_publisher %in% input$publisher,
                   since >= input$publishedSince[1] & since <= input$publishedSince[2],
-                  if (!is.null(input$widget)) str_detect(scope, input$widget) else is.numeric(journal_id),
+                  if (!is.null(input$widget)) str_detect(str_to_lower(scope), str_to_lower(input$widget)) else TRUE,
                   h5_index_z >= input$h5Index[1] & h5_index_z <= input$h5Index[2],
                   h5_median_z >= input$h5Median[1] & h5_median_z <= input$h5Median[2],
                   ssci_rank_z >= input$ssciRank[1] & ssci_rank_z <= input$ssciRank[2],
                   type_category %in% input$typeCategory,
-                  case_when(input$lengthLimits == FALSE ~ is.numeric(journal_id),
+                  case_when(input$lengthLimits == FALSE ~ TRUE,
                             input$limitType == "Words" ~ min_words <= input$wordLimits[1] & min_words <= input$wordLimits[2] & input$wordLimits[1] <= max_words & input$wordLimits[2] <= max_words,
                             input$limitType == "Characters" ~ min_characters <= input$characterLimits[1] & min_characters <= input$characterLimits[2] & input$characterLimits[1] <= max_characters & input$characterLimits[2] <= max_characters,
                             input$limitType == "Pages" ~ min_pages <= input$pageLimits[1] & min_pages <= input$pageLimits[2] & input$pageLimits[1] <= max_pages & input$pageLimits[2] <= max_pages)
