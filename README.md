@@ -8,10 +8,6 @@ This is an R data package on political science journals, with article types bein
 
 The package is based on data from a comprehensive, but not exhaustive, list of political science journals.<sup>[1](#footnote1)</sup> At the same time, the dataset might include journals that do not unambiguously belong to the discipline of political science. Some data points may be inaccurate as well, and others may become inaccurate over time. Consult journal websites for the most accurate information.
 
-
-
-it might include journals that do not clearly belong to the discipline of political science. Existing observations may be inaccurate. Consult the journal websites for the most accurate information.
-
 ## Installation
 
 ```R
@@ -35,7 +31,7 @@ An application of the package is live at [https://resulumit.shinyapps.io/psjourn
 
 `journal`: *character* --- name of the journal<sup>[2](#footnote2)</sup>
 
-`ssci_rank`: *integer* --- Web of Science's SSCI index of the journal, based on the 2-year Journal Impact Factor 2018<sup>[3](#footnote3)</sup>
+`ssci_rank`: *integer* --- Web of Science's SSCI index (in the field of political science) of the journal, based on the 2-year Journal Impact Factor 2018<sup>[3](#footnote3)</sup>
 
 `h5_index`: *integer* --- Google Scholar's H5 Index of the journal, based on the articles published in 2014--2018
 
