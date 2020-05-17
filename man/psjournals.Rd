@@ -9,7 +9,7 @@ A data frame with 653 rows and 15 variables:
 \describe{
 \item{\code{journal_id}}{integer, id number of the journal}
 \item{\code{journal}}{character, name of the journal}
-\item{\code{ssci_rank}}{integer, Web of Science's SSCI index of the journal, based on the 2-year Journal Impact Factor 2018}
+\item{\code{ssci_rank}}{integer, Web of Science's SSCI index (in the field of political science) of the journal, based on the 2-year Journal Impact Factor 2018}
 \item{\code{h5_index}}{integer, Google Scholar's H5 Index of the journal, based on the articles published in 2014-2018}
 \item{\code{h5_median}}{integer, Google Scholar's H5 Index of the journal, based on the articles published in 2014-2018}
 \item{\code{since}}{integer, year of establishment of the journal}
