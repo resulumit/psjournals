@@ -20,7 +20,12 @@ psjournals <- psjournals %>%
 fluidPage(
 
 # App title ----
-  titlePanel("Filter Political Science Journals"),
+  titlePanel("Political Science Journals"),
+
+# Help text ----
+  helpText("An app that filters a dataset on political science journals", HTML("&mdash;"),
+            "by", a("Resul Umit", href = "https://resulumit.com"), "(2020)."),
+
 
 # Sidebar layout with input and output definitions ----
   sidebarLayout(
@@ -123,9 +128,6 @@ mainPanel(
   tabsetPanel(
     tabPanel("Table", DT::dataTableOutput(outputId = "table")),
     tabPanel("Notes",
-             br(),
-             strong("A Shiny app by", a("Resul Umit", href = "https://resulumit.com"), "(2020)"),
-             br(),
              br(),
              p("The source code, including an R data package, and descriptions are available at", a("https://github.com/resulumit/psjournals.", href = "https://github.com/resulumit/psjournals")),
              p("This app is based on data from a comprehensive, but not exhaustive, list of political science journals. At the same time, the dataset might include journals that do not unambiguously belong to the discipline of political science. Some data points may be inaccurate as well, and others may become inaccurate over time. Consult journal websites for the most accurate information."),
