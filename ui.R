@@ -3,6 +3,7 @@
 # load libraries
 library(shiny)
 library(shinyWidgets)
+library(shinyBS)
 library(psjournals)
 library(dplyr)
 library(DT)
@@ -49,8 +50,11 @@ sliderInput(inputId = "publishedSince", label = "Publishing since", step = 1, ti
             min = min(psjournals$since, na.rm = TRUE), max = max(psjournals$since, na.rm = TRUE)),
 
 # Input: Scope ----
-searchInput(inputId = "widget", label = "Journal scope", placeholder = "Filter scopes by keyword",
-            btnSearch = icon("search"), btnReset = icon("remove"), width = "100%"),
+textInput(inputId = "scope", label = "Journal scope", placeholder = "Filter by text pattern"),
+
+# Input: Tooltip for Scope ----
+bsTooltip(id = "scope", title = "E.g., <i>elec</i> would return journals mentioning <i>selection</i>, <i>Election</i>, <i>electorate</i> ... in their scope.",
+          placement = "top", options = list(container = "body")),
 
 # Input: H5 Index ----
 sliderInput(inputId = "h5Index", label = "H5 Index", step = 1, ticks = FALSE,
