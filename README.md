@@ -27,37 +27,37 @@ An application of the package is live at [https://resulumit.shinyapps.io/psjourn
 
 ## Variables
 
-`journal_id`: *integer* --- id number of the journal
+`journal_id`: *integer* &mdash; id number of the journal
 
-`journal`: *character* --- name of the journal<sup>[2](#footnote2)</sup>
+`journal`: *character* &mdash; name of the journal<sup>[2](#footnote2)</sup>
 
-`ssci_rank`: *integer* --- Web of Science's SSCI index (in the field of political science) of the journal, based on the 2-year Journal Impact Factor 2018<sup>[3](#footnote3)</sup>
+`ssci_rank`: *integer* &mdash; Web of Science's SSCI index (in the field of political science) of the journal, based on the 2-year Journal Impact Factor 2018<sup>[3](#footnote3)</sup>
 
-`h5_index`: *integer* --- Google Scholar's H5 Index of the journal, based on the articles published in 2014--2018
+`h5_index`: *integer* &mdash; Google Scholar's H5 Index of the journal, based on the articles published in 2014--2018
 
-`h5_median`: *integer* --- Google Scholar's H5 Index of the journal, based on the articles published in 2014--2018
+`h5_median`: *integer* &mdash; Google Scholar's H5 Index of the journal, based on the articles published in 2014--2018
 
-`since`: *integer* --- year of establishment of the journal
+`since`: *integer* &mdash; year of establishment of the journal
 
-`publisher`: *character* --- publisher of the journal
+`publisher`: *character* &mdash; publisher of the journal
 
-`url`: *character* --- URL link to the journal website
+`url`: *character* &mdash; URL link to the journal website
 
-`scope`: *character* --- scope of the journal
+`scope`: *character* &mdash; scope of the journal
 
-`type_id`: *integer* --- id number of the article type, by each journal
+`type_id`: *integer* &mdash; id number of the article type, by each journal
 
-`type_category`: *character* --- category of the article type
+`type_category`: *character* &mdash; category of the article type
 
-`type`: *character* --- name of the article type, as defined by the journal
+`type`: *character* &mdash; name of the article type, as defined by the journal
 
-`lower_limit`: *character* --- lower (character/word/page) limit of the format
+`lower_limit`: *character* &mdash; lower (character/word/page) limit of the format
 
-`upper_limit`: *character* --- upper (character/word/page) limit of the format
+`upper_limit`: *character* &mdash; upper (character/word/page) limit of the format
 
-`limit_unit`: *character* --- unit of the type limits (character/word/page)
+`limit_unit`: *character* &mdash; unit of the type limits (character/word/page)
 
-`last_updated`: *date* --- the date when each observation was last updated, in the "YYYY-MM-DD" format
+`last_updated`: *date* &mdash; the date when each observation was last updated, in the "YYYY-MM-DD" format
 
 ## Issues
 
