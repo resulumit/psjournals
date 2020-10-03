@@ -1,7 +1,9 @@
+# Original items
 .Rproj.user
 .Rhistory
 .RData
 
+# Add new items
 *.Rproj
 rsconnect/
 data-raw/
