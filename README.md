@@ -57,6 +57,8 @@ An application of the package is live at [https://resulumit.shinyapps.io/psjourn
 
 `limit_unit`: *character* --- unit of the type limits (character/word/page)
 
+`last_updated`: *date* --- the date when each observation was last updated, in the "YYYY-MM-DD" format
+
 ## Issues
 
 Any issues with the data, package, and/or app can be reported at [https://github.com/resulumit/psjournals/issues](https://github.com/resulumit/psjournals/issues ).

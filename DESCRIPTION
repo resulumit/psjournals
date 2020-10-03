@@ -1,6 +1,6 @@
 Package: psjournals
 Title: A Dataset of Article Types in Political Science Journals
-Version: 0.1.0
+Version: 0.1.1
 Date: 2020-05-07
 Authors@R: c(person(given = "Resul",
              family = "Umit",
