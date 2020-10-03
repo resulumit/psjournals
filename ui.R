@@ -115,7 +115,7 @@ pickerInput(inputId = "selectedVariables", label = "Variables to display",
             choices = c("Journal", "Publisher", "Since",
                         "Scope", "H5 Index", "H5 Median",
                         "SSCI Rank", "Article Type",
-                        "Length Limits"),
+                        "Length Limits", "Last Updated"),
             selected = c("Journal", "H5 Index", "Article Type", "Length Limits"),
             options = list(`actions-box` = TRUE, size = 9,
                            `selected-text-format` = "count"),
@@ -135,11 +135,14 @@ mainPanel(
              br(),
              p("The source code, including an R data package, and descriptions are available at", a("https://github.com/resulumit/psjournals.", href = "https://github.com/resulumit/psjournals")),
              p("This app is based on data from a comprehensive, but not exhaustive, list of political science journals. At the same time, the dataset might include journals that do not unambiguously belong to the discipline of political science. Some data points may be inaccurate as well, and others may become inaccurate over time. Consult journal websites for the most accurate information."),
-             p("Please report any issues with the dataset, package, and/or the app at", a("https://github.com/resulumit/psjournals/issues", href = "https://github.com/resulumit/psjournals/issues"), "or to", a("resul.umit@unilu.ch.", href = "mailto:resul.umit@unilu.ch?subject=psjournals"))
+             p("Please report any issues with the dataset, package, and/or the app at", a("https://github.com/resulumit/psjournals/issues", href = "https://github.com/resulumit/psjournals/issues"), "or to", a("resul.umit@gmail.com.", href = "mailto:resul.umit@gmail.com?subject=psjournals"))
              )))
 
 # End: sidebarLayout ----
-)
+),
+
+# Add: Google Analytics
+tags$head(includeHTML(("google_analytics.html")))
 
 # End: fluidpage ----
 )

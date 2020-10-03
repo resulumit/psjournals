@@ -78,7 +78,7 @@ psjournals %>%
            rename("Journal" = "journal_h", "Publisher" = "publisher", "Since" = "since",
                   "Scope" = "scope_h", "H5 Index" = "h5_index", "H5 Median" = "h5_median",
                   "SSCI Rank" =  "ssci_rank", "Article Type" = "type",
-                  "Length Limits" = "lenght_limits") %>%
+                  "Length Limits" = "lenght_limits", "Last Updated" = "last_updated") %>%
 
           # select variables to display according to ui
            select(input$selectedVariables),

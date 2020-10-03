@@ -5,3 +5,4 @@
 *.Rproj
 rsconnect/
 data-raw/
+/*.html
