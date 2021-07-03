@@ -5,7 +5,7 @@
 \alias{psjournals}
 \title{A Dataset of Article Types in Political Science Journals}
 \format{
-A data frame with 653 rows and 15 variables:
+A data frame with 691 rows and 16 variables:
 \describe{
 \item{\code{journal_id}}{integer, id number of the journal}
 \item{\code{journal}}{character, name of the journal}
@@ -22,6 +22,7 @@ A data frame with 653 rows and 15 variables:
 \item{\code{lower_limit}}{character, lower (character/word/page) limit of the format}
 \item{\code{upper_limit}}{character, upper (character/word/page) limit of the format}
 \item{\code{limit_unit}}{character, unit of the type limits (character/word/page)}
+\item{\code{last_updated}}{date, the date when each observation was last updated, in the "YYYY-MM-DD" format}
 }
 }
 \source{

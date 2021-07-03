@@ -37,10 +37,10 @@ fluidPage(
 # Input: Publisher ----
 pickerInput(inputId = "publisher", label = "Publisher",
             choices = c("Taylor & Francis", "Sage", "Wiley", "Cambridge University Press",
-                        "Oxford University Press", "Springer", "Palgrave", "Other"),
+                        "Oxford University Press", "Springer", "Palgrave", "Elsevier", "Other"),
             selected = c("Taylor & Francis", "Sage", "Wiley", "Cambridge University Press",
-                         "Oxford University Press", "Springer", "Palgrave", "Other"),
-            options = list(`actions-box` = TRUE, size = 8,
+                         "Oxford University Press", "Springer", "Palgrave", "Elsevier", "Other"),
+            options = list(`actions-box` = TRUE, size = 9,
                                `selected-text-format` = "count"),
             multiple = TRUE),
 
