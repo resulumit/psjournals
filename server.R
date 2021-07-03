@@ -45,10 +45,11 @@ psjournals %>%
            ssci_rank_z = ifelse(is.na(ssci_rank), 0, ssci_rank),
 
           # re-group publisher
-           re_publisher = case_when(publisher %in% c("Taylor & Francis", "Sage",
+           re_publisher = case_when(publisher %in% c("Taylor & Francis", "SAGE",
                                                      "Cambridge University Press",
                                                      "Oxford University Press",
-                                                     "Wiley", "Springer", "Palgrave") ~ publisher,
+                                                     "Wiley", "Springer", "Palgrave",
+                                                     "Elsevier") ~ publisher,
                                     TRUE ~ "Other"),
 
           # merge the original limit-related variables into one
