@@ -63,6 +63,9 @@ An application of the package is live at [https://resulumit.shinyapps.io/psjourn
 
 Any issues with the data, package, and/or app can be reported at [https://github.com/resulumit/psjournals/issues](https://github.com/resulumit/psjournals/issues ).
 
+## Citation
+
+Umit, Resul, 2022, "psjournals: An R data package on political science journals", https://doi.org/10.7910/DVN/UENCQA, Harvard Dataverse, V1.
 
 ## Notes
 
