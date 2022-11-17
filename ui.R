@@ -141,10 +141,7 @@ mainPanel(
              )))
 
 # End: sidebarLayout ----
-),
-
-# Add: Google Analytics
-tags$head(includeHTML(("google_analytics.html")))
+)
 
 # End: fluidpage ----
 )
