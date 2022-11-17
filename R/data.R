@@ -1,6 +1,6 @@
 #' @title A Dataset of Article Types in Political Science Journals
 #' @description This is a dataset of article types published in selected political science journals.
-#' @format A data frame with 691 rows and 16 variables:
+#' @format A data frame with 717 rows and 16 variables:
 #' \describe{
 #'   \item{\code{journal_id}}{integer, id number of the journal}
 #'   \item{\code{journal}}{character, name of the journal}

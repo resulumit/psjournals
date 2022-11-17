@@ -1,6 +1,6 @@
 Package: psjournals
 Title: A Dataset of Article Types in Political Science Journals
-Version: 0.1.1
+Version: 0.1.2
 Date: 2020-05-07
 Authors@R: c(person(given = "Resul",
              family = "Umit",
@@ -14,5 +14,5 @@ LazyData: true
 URL: http://github.com/resulumit/psjournals
 BugReports: http://github.com/resulumit/psjournals/issues
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1
 Depends: R (>= 2.10)

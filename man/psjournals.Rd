@@ -5,7 +5,7 @@
 \alias{psjournals}
 \title{A Dataset of Article Types in Political Science Journals}
 \format{
-A data frame with 691 rows and 16 variables:
+A data frame with 717 rows and 16 variables:
 \describe{
 \item{\code{journal_id}}{integer, id number of the journal}
 \item{\code{journal}}{character, name of the journal}
