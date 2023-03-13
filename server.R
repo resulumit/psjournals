@@ -63,7 +63,7 @@ psjournals %>%
           # filter according to ui
            filter(re_publisher %in% input$publisher,
                   since >= input$publishedSince[1] & since <= input$publishedSince[2],
-                  if (!is.null(input$scope)) str_detect(str_to_lower(scope), str_to_lower(input$scope)) else TRUE,
+                  if (isTruthy(input$scope)) str_detect(str_to_lower(scope), str_to_lower(input$scope)) else TRUE,
                   h5_index_z >= input$h5Index[1] & h5_index_z <= input$h5Index[2],
                   h5_median_z >= input$h5Median[1] & h5_median_z <= input$h5Median[2],
                   ssci_rank_z >= input$ssciRank[1] & ssci_rank_z <= input$ssciRank[2],
