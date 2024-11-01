@@ -7,4 +7,6 @@
 *.Rproj
 rsconnect/
 data-raw/*
-!data-raw/psjournals_source.csv
+
+# other files
+.html

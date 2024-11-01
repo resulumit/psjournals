@@ -4,9 +4,11 @@
 
 ## Description
 
-This is an R data package on political science journals, with article types being the unit of observation. It comes with [an R Shiny app](https://resulumit.shinyapps.io/psjournals/) designed to filter the data, to facilitate exploring journals and their article types for manuscript submission.
+This is an R data package on political science journals, with article types as the units of observation. It includes [an R Shiny app](https://resulumit.shinyapps.io/psjournals/) designed to filter the data, making it easier to explore journals and their article types for manuscript submission.
 
-The package is based on data from a comprehensive, but not exhaustive, list of political science journals.<sup>[1](#footnote1)</sup> At the same time, the dataset might include journals that do not unambiguously belong to the discipline of political science. Some data points may be inaccurate as well, and others may become inaccurate over time. Consult journal websites for the most accurate information.
+The dataset was last fully updated in November 2024, at which time it included 922 entries from 346 journals.
+
+The package is based on a comprehensive, though not exhaustive, list of political science journals. Additionally, the dataset may include some journals that are not exclusively within the field of political science. While every effort has been made to ensure accuracy, some data points may be inaccurate and may become outdated over time. For the most up-to-date information, please refer to individual journal websites.
 
 ## Installation
 
@@ -27,15 +29,15 @@ An application of the package is live at [https://resulumit.shinyapps.io/psjourn
 
 ## Variables
 
-`journal_id`: *integer* &mdash; id number of the journal
+`id`: *integer* &mdash; id number of the journal
 
-`journal`: *character* &mdash; name of the journal<sup>[2](#footnote2)</sup>
+`journal`: *character* &mdash; name of the journal<sup>[1](#footnote1)</sup>
 
-`ssci_rank`: *integer* &mdash; Web of Science's SSCI index (in the field of political science) of the journal, based on the 2-year Journal Impact Factor 2018<sup>[3](#footnote3)</sup>
+`ifactor`: *integer* &mdash; The Impact Factor of the journal<sup>[2](#footnote3)</sup>
 
-`h5_index`: *integer* &mdash; Google Scholar's H5 Index of the journal, based on the articles published in 2014--2018
+`h5_index`: *integer* &mdash; Google Scholar's H5 Index of the journal
 
-`h5_median`: *integer* &mdash; Google Scholar's H5 Index of the journal, based on the articles published in 2014--2018
+`h5_median`: *integer* &mdash; Google Scholar's H5 Index of the journal
 
 `since`: *integer* &mdash; year of establishment of the journal
 
@@ -57,7 +59,7 @@ An application of the package is live at [https://resulumit.shinyapps.io/psjourn
 
 `limit_unit`: *character* &mdash; unit of the type limits (character/word/page)
 
-`last_updated`: *date* &mdash; the date when each observation was last updated, in the "YYYY-MM-DD" format
+`last_updated`: *date* &mdash; the date when each observation was last updated, in the "YYYY-MM" format
 
 ## Issues
 
@@ -65,13 +67,11 @@ Any issues with the data, package, and/or app can be reported at [https://github
 
 ## Citation
 
-Umit, Resul, 2022, "psjournals: An R data package on political science journals", https://doi.org/10.7910/DVN/UENCQA, Harvard Dataverse, V1.
+Umit, Resul, 2024, "psjournals: An R data package on political science journals", https://doi.org/10.7910/DVN/UENCQA, Harvard Dataverse, V3.
 
 ## Notes
 
-<a name="footnote1">1</a>: The dataset includes 652 observations from 306 journals.
-
-<a name="footnote2">2</a>: The initial list of journals has been put together from lists at apsa.org (see [here](https://www.apsanet.org/journals) and [here](https://www.apsanet.org/otherjournals
+<a name="footnote1">1</a>: The initial list of journals has been put together from lists at apsa.org (see [here](https://www.apsanet.org/journals) and [here](https://www.apsanet.org/otherjournals
 )) and wikipedia.org (see [here](https://en.wikipedia.org/w/index.php?title=Category:Political_science_journals&pageuntil=World+Politics#mw-pages) and [here](https://en.wikipedia.org/wiki/List_of_political_science_journals)).
 
-<a name="footnote3">3</a>: In practice, this variable comes from ooir.org. See [here](https://ooir.org/journals.php?category=polisci).
+<a name="footnote2">2</a>: In practice, this variable comes from ooir.org. See [here](https://ooir.org/journals.php?metric=jif).
