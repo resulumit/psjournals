@@ -44,7 +44,7 @@ function(input, output) {
           "</span>"
         ),
 
-        # Hyperlink the journal names
+        # Hyperlink journal names
         journal_h = paste0("<a href='", url, "' target='_blank'>", journal, "</a>")
       ) |>
       ungroup() |>
@@ -191,13 +191,45 @@ function(input, output) {
         "Last Updated" = "last_updated"
       ) |>
 
-      # select variables to display according to ui
-      select(input$selectedVariables)
+      # select variables to display according to ui + journal name
+      select(any_of(c("Journal", input$selectedVariables, "journal", "max_words")))
   })
 
   # Render the datatable based on the filtered data
-  output$table <- DT::renderDataTable({
-    DT::datatable(filtered_data(), options = list(pageLength = 20), rownames = FALSE, escape = FALSE)
+  output$table <- renderDataTable({
+
+    # Dynamically find the column indices for `journal` and `journal_h`
+    journal_index <- which(names(filtered_data()) == "journal") -1
+    journal_h_index <- which(names(filtered_data()) == "Journal") -1
+
+    # Dynamically find the column indices for `max_words` and `lenght_limits`
+    max_words_index <- which(names(filtered_data()) == "max_words") -1
+    lenght_limits_index <- which(names(filtered_data()) == "Length Limits") -1
+
+    datatable(
+
+      filtered_data(),
+      options = list(
+        pageLength = 20,
+        rownames = FALSE,
+        escape = FALSE,  # Ensures HTML tags are rendered
+        columnDefs = list(
+
+          # Hide the `journal` and `max_words` columns
+          list(visible = FALSE, targets = journal_index),
+          list(visible = FALSE, targets = max_words_index),
+
+          # Set the sorting for journal_h (HTML link) based on the journal column's data
+          list(orderData = journal_index, targets = journal_h_index),
+
+          # Set the sorting for lenght_limit based on max_words (common limit)
+          list(orderData = max_words_index, targets = lenght_limits_index)
+
+        )
+      ),
+      escape = FALSE,  # Ensures HTML tags in `journal_h` are rendered correctly
+      rownames = FALSE
+    )
   })
 
   # Downloadable data ----
