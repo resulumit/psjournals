@@ -89,7 +89,7 @@ function(input, output) {
         ),
 
         # merge the original limit-related variables into one
-        lenght_limits = case_when(
+        length_limits = case_when(
           !is.na(lower_limit) &
             !is.na(upper_limit) ~ paste(lower_limit, "to", upper_limit, limit_unit, sep = " "),
           is.na(lower_limit) &
@@ -187,7 +187,7 @@ function(input, output) {
         "H5 Index" = "h5_index",
         "H5 Median" = "h5_median",
         "Article Type" = "type",
-        "Length Limits" = "lenght_limits",
+        "Length Limits" = "length_limits",
         "Last Updated" = "last_updated"
       ) |>
 
@@ -202,9 +202,9 @@ function(input, output) {
     journal_index <- which(names(filtered_data()) == "journal") -1
     journal_h_index <- which(names(filtered_data()) == "Journal") -1
 
-    # Dynamically find the column indices for `max_words` and `lenght_limits`
+    # Dynamically find the column indices for `max_words` and `length_limits`
     max_words_index <- which(names(filtered_data()) == "max_words") -1
-    lenght_limits_index <- which(names(filtered_data()) == "Length Limits") -1
+    length_limits_index <- which(names(filtered_data()) == "Length Limits") -1
 
     datatable(
 
@@ -222,8 +222,8 @@ function(input, output) {
           # Set the sorting for journal_h (HTML link) based on the journal column's data
           list(orderData = journal_index, targets = journal_h_index),
 
-          # Set the sorting for lenght_limit based on max_words (common limit)
-          list(orderData = max_words_index, targets = lenght_limits_index)
+          # Set the sorting for length_limit based on max_words (common limit)
+          list(orderData = max_words_index, targets = length_limits_index)
 
         )
       ),
