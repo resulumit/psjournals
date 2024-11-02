@@ -32,13 +32,13 @@ fluidPage(
           margin-bottom: 10px;
       }
       .input-background2 {
-          background-color: #fff5d6; /* Light yellow */
+          background-color: #fff5d6;
           padding: 10px;
           border-radius: 5px;
           margin-bottom: 10px;
       }
       .input-background3 {
-          background-color: #EAD4EB; /* Light orange */
+          background-color: #EAD4EB;
           padding: 10px;
           border-radius: 5px;
           margin-bottom: 10px;
