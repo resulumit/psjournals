@@ -46,10 +46,10 @@ fluidPage(
     ")),
 
     # Meta tag for UTF-8 encoding
-    tags$meta(charset = "UTF-8"),
+    tags$meta(charset = "UTF-8")
 
     # Google Analytics
-    #includeHTML("google_analytics.html")
+    #, includeHTML("google_analytics.html")
   ),
 
 # App title ----
