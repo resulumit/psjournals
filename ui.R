@@ -140,7 +140,7 @@ pickerInput(inputId = "typeCategory", label = "Article type",
 
 fluidRow(
 
-  column(6, textInput(inputId = "length_limit", label = "Length limits", placeholder = "Enter a number or a range")),
+  column(6, textInput(inputId = "limitInput", label = "Manuscript Length", placeholder = "Enter a number or a range")),
   column(6, selectInput(inputId = "limitType", label = HTML("&nbsp;"),
                         selected = "Words", choices = c("Words", "Characters", "Pages")))
 ),

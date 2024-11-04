@@ -11,15 +11,22 @@ function(input, output) {
   # Reactive expression for filtering the data based on inputs
   filtered_data <- reactive({
 
-    # Parse length_limit input
-    length_limits <- if (isTruthy(input$length_limit)) {
-      as.numeric(unlist(strsplit(input$length_limit, "[-, ]+")))
+    # Parse limitInput input by extracting only numeric values
+    limit_inputs <- if (isTruthy(input$limitInput)) {
+      # Use regex to extract all numeric sequences from the input string
+      parsed <- as.numeric(unlist(str_extract_all(input$limitInput, "\\d+")))
+      if (all(!is.na(parsed)) && length(parsed) > 0) {
+        parsed  # Return parsed numeric vector only if all values are valid
+      } else {
+        NULL  # Return NULL if parsing fails
+      }
     } else {
       NULL
     }
 
     # Filter data
     psjournals |>
+
       # Escape single and double quotes in `scope` to avoid issues
       mutate(
         scope = str_replace_all(scope, "'", "\\'"),
@@ -139,40 +146,37 @@ function(input, output) {
 
         type_category %in% input$typeCategory,
 
-        # 1. Condition to include NAs in `upper_limit` if specified by the user
-        if (input$includeNA_limits) {
-          is.na(upper_limit) | !is.na(upper_limit)
-        } else {
-          !is.na(upper_limit)
-        },
-
-        # 2. Length limit filter based on input$limitType
-        if (isTruthy(length_limits)) {
-          # Include NAs while applying the length filter
-          is.na(upper_limit) |
-            if (length(length_limits) == 1) {
-              # Single number entered
-              if (input$limitType == "Words") {
-                min_words <= length_limits[1] & max_words >= length_limits[1]
-              } else if (input$limitType == "Characters") {
-                min_characters <= length_limits[1] & max_characters >= length_limits[1]
-              } else if (input$limitType == "Pages") {
-                min_pages <= length_limits[1] & max_pages >= length_limits[1]
-              }
-            } else if (length(length_limits) == 2) {
-              # Two numbers entered (range)
-              if (input$limitType == "Words") {
-                min_words <= length_limits[2] & max_words >= length_limits[1]
-              } else if (input$limitType == "Characters") {
-                min_characters <= length_limits[2] & max_characters >= length_limits[1]
-              } else if (input$limitType == "Pages") {
-                min_pages <= length_limits[2] & max_pages >= length_limits[1]
-              }
-            } else {
-              TRUE  # If input cannot be parsed, no filtering is applied
+        # Length limit filter based on input$limitType and input$includeNA_limits
+        if (isTruthy(limit_inputs)) {
+          # Handle cases where one or two numeric values are provided in limit_inputs
+          if (length(limit_inputs) == 1) {
+            if (input$limitType == "Words") {
+              (min_words <= limit_inputs[1] & max_words >= limit_inputs[1]) |
+                (input$includeNA_limits & is.na(upper_limit))
+            } else if (input$limitType == "Characters") {
+              (min_characters <= limit_inputs[1] & max_characters >= limit_inputs[1]) |
+                (input$includeNA_limits & is.na(upper_limit))
+            } else if (input$limitType == "Pages") {
+              (min_pages <= limit_inputs[1] & max_pages >= limit_inputs[1]) |
+                (input$includeNA_limits & is.na(upper_limit))
             }
+          } else if (length(limit_inputs) == 2) {
+            # Handle cases where two numbers are entered (range)
+            if (input$limitType == "Words") {
+              (min_words <= limit_inputs[2] & max_words >= limit_inputs[1]) |
+                (input$includeNA_limits & is.na(upper_limit))
+            } else if (input$limitType == "Characters") {
+              (min_characters <= limit_inputs[2] & max_characters >= limit_inputs[1]) |
+                (input$includeNA_limits & is.na(upper_limit))
+            } else if (input$limitType == "Pages") {
+              (min_pages <= limit_inputs[2] & max_pages >= limit_inputs[1]) |
+                (input$includeNA_limits & is.na(upper_limit))
+            }
+          } else {
+            TRUE  # If input cannot be parsed, no filtering is applied
+          }
         } else {
-          TRUE  # If input$length_limit is empty, apply no filter
+          input$includeNA_limits | !is.na(upper_limit)  # Apply includeNA_limits if no limit_input is provided
         }
 
       ) |>
