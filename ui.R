@@ -181,8 +181,8 @@ mainPanel(
              br(),
              p("This app was originally created in 2020, with the data most recently updated in full in November 2024."),
              p("The source code, including an R data package, and descriptions are available at", a("https://github.com/resulumit/psjournals.", href = "https://github.com/resulumit/psjournals")),
-             p("This app is based on data from a comprehensive, but not exhaustive, list of political science journals. At the same time, the dataset might include journals that do not unambiguously belong to the discipline of political science. Some data points may be inaccurate as well, and others may become inaccurate over time. Consult journal websites for the most accurate information."),
-             p("Please report any issues with the dataset, package, and/or the app at", a("https://github.com/resulumit/psjournals/issues", href = "https://github.com/resulumit/psjournals/issues"), "or to", a("resul.umit@gmail.com.", href = "mailto:resul.umit@gmail.com?subject=psjournals")),
+             p("This app is based on data from a comprehensive, but not exhaustive, list of political science journals. At the same time, the dataset might include journals that do not unambiguously belong to the discipline of political science. Some data points may be inaccurate, and others may become inaccurate over time. Consult journal websites for the most accurate information."),
+             p("Please report any issues with the dataset, package, and/or the app at", a("https://github.com/resulumit/psjournals/issues", href = "https://github.com/resulumit/psjournals/issues"), "or to", a("resulumit@gmail.com.", href = "mailto:resulumit@gmail.com?subject=psjournals")),
              p("It can be cited as follows:"),
              p("Umit, Resul, 2024, psjournals: An R data package on political science journals,", a("https://doi.org/10.7910/DVN/UENCQA", href = "https://doi.org/10.7910/DVN/UENCQA"), "Harvard Dataverse, V1.")
              )))
