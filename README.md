@@ -6,7 +6,7 @@
 
 This is an R data package on political science journals, with article types as the units of observation. It includes [an R Shiny app](https://resulumit.shinyapps.io/psjournals/) designed to filter the data, making it easier to explore journals and their article types for manuscript submission.
 
-The dataset was last fully updated in November 2024.
+The dataset was last fully updated in November 2024, with further ad-hoc updates carried out since that time.
 
 The package is based on a comprehensive, though not exhaustive, list of political science journals. Additionally, the dataset may include some journals that are not exclusively within the field of political science. While every effort has been made to ensure accuracy, some data points may be inaccurate and may become outdated over time. For the most up-to-date information, please refer to individual journal websites.
 
